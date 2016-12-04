@@ -22,7 +22,8 @@ class Game
     puts '           William Quinn'
 
     @board = Board.new(@current_player)
-
+    @board.display
+    
     game_over = false
     until game_over
       ask_player_for_move
@@ -35,7 +36,7 @@ class Game
         puts 'Tie Game'
         game_over = true
       else
-        puts '\n'
+        puts ''
         next_player
       end
     end
@@ -45,7 +46,6 @@ class Game
   def ask_player_for_move
     played = false
     until played
-      @board.display
       puts "Player #{@current_player}: Where would you like to play?"
       player_selection = gets.chomp.to_i - 1
 

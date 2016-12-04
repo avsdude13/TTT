@@ -56,7 +56,6 @@ class Board
   end
 
   def winner_rows
-    puts 'rows win check'
     for row in 0..BOARD_MAX_INDEX
       to_find = @board[row][0]
       if to_find == EMPTY_POSITION
@@ -75,7 +74,6 @@ class Board
   end
 
   def winner_columns
-    puts 'columns win check'
     for column in 0..BOARD_MAX_INDEX
       to_find = @board[0][column]
       if to_find == EMPTY_POSITION
@@ -94,7 +92,6 @@ class Board
   end
 
   def winner_diagonals
-    puts 'diagonals win check'
     for index in 0..BOARD_MAX_INDEX
       to_find = @board[0][0]
       if to_find == EMPTY_POSITION
