@@ -2,6 +2,7 @@ class Board
 
   BOARD_MAX_INDEX = 2
   EMPTY_POSITION = ' '
+  @winning_player
 
   def initialize(starting_player)
     @current_player = starting_player
@@ -39,22 +40,19 @@ class Board
   end
 
   def winner
-    winner = winner_rows
-    if winner != nil
-      return winner
+    if winner_rows
+      return true
+    elsif winner_columns
+      return true
+    elsif winner_diagonals
+      return true
     else
-      winner = winner_columns
-      if winner != nil
-        return winner
-      else
-        winner = winner_diagonals
-        if winner != nil
-          return winner
-        else
-          return false
-        end
-      end
+      return false
     end
+  end
+
+  def get_winner
+    return @winning_player
   end
 
   def winner_rows
@@ -64,15 +62,16 @@ class Board
       if to_find == EMPTY_POSITION
         next
       end
-      for column in 1..BOARD_MAX_INDEX
+      for column in 0..BOARD_MAX_INDEX
         if to_find != @board[row][column]
-          return nil
+          break
         elsif column == BOARD_MAX_INDEX && to_find != EMPTY_POSITION
-          return to_find
+          @winning_player = to_find
+          return true
         end
       end
     end
-    return nil
+    return false
   end
 
   def winner_columns
@@ -82,11 +81,12 @@ class Board
       if to_find == EMPTY_POSITION
         next
       end
-      for row in 1..BOARD_MAX_INDEX
+      for row in 0..BOARD_MAX_INDEX
         if to_find != @board[row][column]
-          return nil
+          break
         elsif row == BOARD_MAX_INDEX && to_find != EMPTY_POSITION
-          return to_find
+          @winning_player = to_find
+          return true
         end
       end
     end
@@ -103,7 +103,8 @@ class Board
         if to_find != @board[index][index]
           break
         elsif index == BOARD_MAX_INDEX && to_find != EMPTY_POSITION
-          return to_find
+          @winning_player = to_find
+          return true
         end
     end
 
@@ -113,12 +114,13 @@ class Board
         break
       end
       if to_find != @board[index2][BOARD_MAX_INDEX - index2]
-        return nil
+        return false
       elsif index2 == BOARD_MAX_INDEX
-        return to_find
+        @winning_player = to_find
+        return true
       end
     end
-    return nil
+    return false
   end
 
   def validate_position(row, column)

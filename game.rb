@@ -29,7 +29,7 @@ class Game
 
       if @board.winner
         @board.display
-        puts "Player #{@current_player} wins."
+        puts "Player #{@board.get_winner} wins."
         game_over = true
       elsif @board.board_full
         puts 'Tie Game'
