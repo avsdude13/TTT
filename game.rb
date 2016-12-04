@@ -1,3 +1,12 @@
+=begin
+Title:  Ruby TicTacToe Game
+Authors: Adonis Muminovic, Matt Kline, and William Quinn
+Class: Comp Sci 1030 MW @ 10-12
+
+This class functions as the actual playing of the tic tac toe game and works off the board created through the board.rb class.
+It will mainly work with player interacting methods and make calls upon the board related method from the previous class.
+=end
+
 require_relative 'board.rb'
 
 class Game
@@ -18,12 +27,11 @@ class Game
     puts 'Starting Tic-Tac-Toe'
     puts 'Created by Adonis Muminovic'
     puts '           Matt Kline'
-    puts '           Eric Lindgren'
     puts '           William Quinn'
 
     @board = Board.new(@current_player)
     @board.display
-    
+
     game_over = false
     until game_over
       ask_player_for_move

@@ -1,3 +1,12 @@
+=begin
+Title:  Ruby TicTacToe Game
+Authors: Adonis Muminovic, Matt Kline, and William Quinn
+Class: Comp Sci 1030 MW @ 10-12
+
+This class functions as the 3 by 3 board space for the the Tic Tac Toe game and allows for player space selection through
+a user input of the int value representing that space.
+=end
+
 class Board
 
   BOARD_MAX_INDEX = 2
